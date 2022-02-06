@@ -1,4 +1,5 @@
 \documentclass{article}[12pt]
+\usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{siunitx}
@@ -60,14 +61,15 @@ Value of components (resistors/gain) present in the circuit
     \label{tab:values2}
 \end{table}
 \subsection*{Circuit as on LT SPICE}
+
 \begin{figure}[ht]
     \centering
-    \includegraphics[scale=0.25]{orgcircuit.png}
+    \includegraphics[scale=0.25]{resources/orgcircuit.png}
     \caption{Original 2 port network simulated on LT SPICE}
 
 \end{figure}
-%add circuit diagram
-\subsection*{Z, Y and h Parameters}
+\newpage
+\subsection*{Z, Y and H Parameters}
 %add Z, Y and h parameters
 \subsubsection*{Z parameters}
 Z parameters as obtained from LT SPICE
@@ -79,14 +81,14 @@ $$
 \subsubsection*{Y parameters}
 Y parameters as obtained from LT SPICE
 $$ Y = \begin{bmatrix} %fill matrix with proper values
-        24.479166\mu\mho & 8.8541665\mu\mho \\
+        24.479166\mu\mho  & 8.8541665\mu\mho  \\
         -104.47916\mu\mho & -51.145835\mu\mho
     \end{bmatrix}
 $$
 \subsubsection*{H parameters}
 $$ H = \begin{bmatrix} %fill matrix with proper values
-        0.0k\Omega & 0.0      \\
-        0.0        & 0.0k\mho
+        40.851062k\Omega       & 361.70211m \mathrm{V/V} \\
+        -4.268085 \mathrm{A/A} & -88.936169\mho
     \end{bmatrix}
 $$
 \newpage
@@ -95,7 +97,7 @@ $$
 \subsubsection*{Z parameters}
 \begin{figure}[ht]
     \centering
-    \includegraphics[scale=0.25]{zparams1.png}
+    \includegraphics[scale=0.20]{resources/zparams1.png}
     \caption{Z parameter circuit 1 (for $z_{11}$ and $z_{21}$)}
 \end{figure}
 Assume the convention in the above circuit for the calculations that follow
@@ -107,19 +109,19 @@ Assume the convention in the above circuit for the calculations that follow
     \implies i_x=I_1\frac{(R_3+R_4)}{R_3+R_4-R_2(k-1)} \\
     V_1=I_1R_1+V_x\\
     V_1=I_1R_1+i_xR_2\\
-    V_1=I_1\left(R_1+\frac{R_2(R_3+R_4)}{R_3+R_4-R_2(k-1)}\right) \\
+    V_1=I_1\left[R_1+\frac{R_2(R_3+R_4)}{R_3+R_4-R_2(k-1)}\right] \\
     \implies \frac{V_1}{I_1}=\boxed{z_{11} = R_1 + \frac{R_2(R_3+R_4)}{R_3+R_4-R_2(k-1)}} \\
     \mathrm{Also:} \\
     V_2=(I_1-i_x)R_4+kV_x\\
     V_2=(I_1-i_x)R_4+ki_xR_2\\
     V_2=i_x(kR_2-R_4)+I_1R_4\\
-    V_2=I_1\left(R_4+\frac{(kR_2-R_4)(R_3+R_4)}{R_3+R_4+R_2(k-1)}\right)\\
+    V_2=I_1\left[R_4+\frac{(kR_2-R_4)(R_3+R_4)}{R_3+R_4+R_2(k-1)}\right]\\
     \implies\frac{V_2}{I_1} = \boxed{z_{21} = R_4 + \frac{(kR_2-R_4)(R_3+R_4)}{R_3+R_4-R_2(k-1)}}
 \end{gather*}
 \newpage
 \begin{figure}[ht]
     \centering
-    \includegraphics[scale=0.25]{zparams2.png}
+    \includegraphics[scale=0.25]{resources/zparams2.png}
     \caption{Z parameter circuit 2 (for $z_{12}$ and $z_{22}$)}
 \end{figure}
 Assume the convention in the above circuit for the calculations that follow
@@ -133,8 +135,8 @@ Assume the convention in the above circuit for the calculations that follow
     V_2=i_yR_4+kV_x\\
     V_2=i_yR_4+k(I_2-i_y)R_2\\
     V_2=i_y[R_4-kR_2]+KI_2R_2\\
-    V_2=I_2\left[\frac{(R_4-kR_2)[(1-k)R_2+R_3]}{(1-k)R_2+R_3+R_4}+kR_2\right]\\
-    \implies \frac{V_2}{I_2} = \boxed{z_{22} = \frac{(R_4-kR_2)[(1-k)R_2+R_3]}{(1-k)R_2+R_3+R_4}+kR_2}\\
+    V_2=I_2\left[\frac{(R_4-kR_2)\{(1-k)R_2+R_3\}}{(1-k)R_2+R_3+R_4}+kR_2\right]\\
+    \implies \frac{V_2}{I_2} = \boxed{z_{22} = \frac{(R_4-kR_2)\{(1-k)R_2+R_3\}}{(1-k)R_2+R_3+R_4}+kR_2}\\
     \mathrm{Also:} \\
     V_1=V_x=(I_2-i_y)R_2\\
     V_1=I_2R_2\left[1-\frac{(1-k)R_2+R_3}{(1-k)R_2+R_3+R_4}\right]\\
@@ -149,6 +151,7 @@ $$ Z = \begin{bmatrix}
 $$
 Which is in accordance with the values obtained from the simulation.
 \subsubsection*{Y parameters}
+\subsubsection*{H parameters}
 
 \subsection*{Load resistance value at port 2}
 %calculate according to question given
