@@ -81,7 +81,7 @@ $$
 \subsubsection*{Y parameters}
 Y parameters as obtained from LT SPICE
 $$ Y = \begin{bmatrix} %fill matrix with proper values
-        24.479166\mu\mho  & 8.8541665\mu\mho  \\
+        24.479166\mu\mho  & -8.8541665\mu\mho \\
         -104.47916\mu\mho & -51.145835\mu\mho
     \end{bmatrix}
 $$
@@ -151,7 +151,37 @@ $$ Z = \begin{bmatrix}
 $$
 Which is in accordance with the values obtained from the simulation.
 \subsubsection*{Y parameters}
+From the above matrix for Z parameters, we can calculate the Y parameters as follows:
+\begin{gather*}
+    \Delta Z = z_{11}z_{22}-z_{12}z_{21}\\
+    \implies \Delta Z = [(23.49282297\times-11.244041914)-(-47.99043062\times-4.066985646)]\times 10^3\\
+    \Delta Z =-459.326\times 10^6\\
+    Y = \begin{bmatrix}
+        \dfrac{z_{22}}{\Delta Z}  & -\dfrac{z_{12}}{\Delta Z} \\[2ex]
+        -\dfrac{z_{21}}{\Delta Z} & \dfrac{z_{11}}{\Delta Z}  \\[2ex]
+    \end{bmatrix}
+\end{gather*}
+Simplifying the above matrix, we get the Y parameters:
+$$ Y = \begin{bmatrix}
+        2.448 \times 10^{-5}\mu\mho    & -8.8541\times10^{-6}\mu\mho \\[1ex]
+        -1.104480\times 10^{-4}\mu\mho & -5.11\times 10^{-5}\mu\mho  \\[1ex]
+    \end{bmatrix}
+$$
 \subsubsection*{H parameters}
+
+Similarly, we can calculate the H parameters as follows:
+\begin{gather*}
+    H = \begin{bmatrix}
+        \dfrac{\Delta Z}{z_{22}} & -\dfrac{z_{12}}{z_{22}} \\[2ex]
+        -\dfrac{z_{21}}{z_{22}}  & \dfrac{1}{z_{22}}       \\[2ex]
+    \end{bmatrix}
+\end{gather*}
+Simplifying the above matrix, we get the H parameters:
+$$ H = \begin{bmatrix}
+        40.8507k\Omega      & -0.3617 \mathrm{V/V} \\[1ex]
+        -4.2681\mathrm{A/A} & -88.9363\mho         \\[1ex]
+    \end{bmatrix}
+$$
 
 \subsection*{Load resistance value at port 2}
 %calculate according to question given
