@@ -39,8 +39,24 @@ Value of components (resistor/capacitor) present in the circuit:
 %add circuit diagram
 \subsection*{Graphs}
 %add graphs: frequency response, input, output and transfer characteristics
+\newpage
 \subsection*{Miscellaneous calculations}
 %find DC operating point, small signal equivalent
+\subsubsection*{DC operating point}
+Given the overdrive voltage of the MOSFET as 0.2V and the threshold voltage as 0.6696061V, to calculate the DC operating point, we must take\\
+$V_{GS}=V_{TH}+V_{OD}=0.8696061$V. With this value of $V_{GS}$, the simulation yields the following values:
+\begin{figure}[ht]
+    \centering
+    \includegraphics[scale=0.50]{resources/dcop.png}
+    \caption{DC operating point circuit}
+    \label{fig:dc_op}
+\end{figure}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[scale=0.70]{resources/opparams.png}
+    \caption{DC operating point parameters}
+    \label{fig:dc_op_freq}
+\end{figure}
 \newpage
 \section*{Question 2}
 Value of components (resistors/gain) present in the circuit
@@ -66,7 +82,6 @@ Value of components (resistors/gain) present in the circuit
     \centering
     \includegraphics[scale=0.25]{resources/orgcircuit.png}
     \caption{Original 2 port network simulated on LT SPICE}
-
 \end{figure}
 \newpage
 \subsection*{Z, Y and H Parameters}

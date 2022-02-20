@@ -1,0 +1,13 @@
+* C:\Users\Sai Kartik\OneDrive - BIRLA INSTITUTE OF TECHNOLOGY and SCIENCE\Documents\MuE Assignments\Assignment 1\resources\question1.asc
+Vgs N002 0 0.8696061
+V2 N001 0 5
+M1 vout N002 0 0 NMOS
+R1 N001 vout 15k
+C1 0 vout 1n
+.model NMOS NMOS
+.model PMOS PMOS
+.lib C:\Users\Sai Kartik\OneDrive - BIRLA INSTITUTE OF TECHNOLOGY and SCIENCE\Documents\LTspiceXVII\lib\cmp\standard.mos
+.lib "C:\Users\Sai Kartik\OneDrive - BIRLA INSTITUTE OF TECHNOLOGY and SCIENCE\Documents\MuE Assignments\Assignment 1\resources\SPICE Library Files.lib"
+.op
+.backanno
+.end
