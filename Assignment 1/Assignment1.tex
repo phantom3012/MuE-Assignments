@@ -72,7 +72,7 @@ Value of components (resistor/capacitor) present in the circuit:
     \label{fig:i_vs_vgs}
 \end{figure}
 
-In Figure \hyperref[fig:fr1]{\ref{fig:fr1}}, for an approximate 3dB change in frequency (as shown by both cursors), we see the phase shift by approximately $45^{\circ}$.
+In figure \hyperref[fig:fr1]{\ref{fig:fr1}}, for an approximate 3dB change in frequency (as shown by both cursors), we see the phase shift by approximately $45^{\circ}$.
 
 \newpage
 \subsection*{Miscellaneous calculations}
@@ -100,7 +100,7 @@ Using the values found above from the DC operating point calculations, we can ca
 $$g_m=\frac{2\times4.47302\times10^{-7}}{0.2}=4.47302\times10^{-6}A/V$$
 The value of the output resistance $r_0$ corresponding to the early effect/channel length modulation is given by:
 $$r_0=\left(\left.\frac{\partial i_D}{\partial V_{DS}}\right)^{-1}\right|_{V_{GS}=\mathrm{constant}}$$
-This can be found out from the simulation by setting $V_{GS}=V_{TH}+V_{OV}$ and finding the value of the differential at $V_{DS}=5$V.
+This can be found out from the simulation by setting $V_{GS}=V_{TH}+V_{OV}$ and finding the value of the inverse of the differential at $V_{DS}=5$V.
 \begin{figure}[ht]
     \centering
     \makebox[\textwidth]{\includegraphics[width=\columnwidth]{resources/r0.png}}
@@ -108,7 +108,7 @@ This can be found out from the simulation by setting $V_{GS}=V_{TH}+V_{OV}$ and 
     \label{fig:r0}
 \end{figure}\\
 The value of $r_0$ we get from this graph is $r_0=59.272865\mathrm{M}\Omega$.
-Collectively, we get the small signal model as:
+Collectively, we get the small signal model as below:
 \begin{figure}[ht]
     \centering
     \includegraphics[scale=0.35]{resources/ssmodel.png}
@@ -216,7 +216,7 @@ Assume the convention in the above circuit for the calculations that follow
     \implies \frac{V_1}{I_2} = \boxed{z_{12} = R_2\left[1-\frac{(1-k)R_2+R_3}{(1-k)R_2+R_3+R_4}\right]}
 \end{gather*}
 \newpage
-Using the corresponding values taken from \hyperref[tab:values2]{\ref{tab:values2}} into the above equations, we get the matrix for the Z parameters:
+Using the corresponding values taken from table \hyperref[tab:values2]{\ref{tab:values2}} into the above equations, we get the matrix for the Z parameters:
 $$ Z = \begin{bmatrix}
         23.49282297k\Omega  & -4.066985646k\Omega  \\
         -47.99043062k\Omega & -11.244041914k\Omega
@@ -277,5 +277,5 @@ The circuit used to determine the above graph is shown below:
     \makebox[\textwidth]{\includegraphics[width=\columnwidth]{resources/maxpowerresistance.png}}
     \caption{Load resistance value at port 2}
 \end{figure}\\
-The values to vary the resistance was deduced through trial and error to get a clear graph.
+The values through which the resistance is varied, is deduced through trial and error to get a clear graph.
 \end{document}
