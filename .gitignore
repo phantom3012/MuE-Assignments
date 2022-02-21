@@ -5,4 +5,7 @@
 *.synctex.gz
 *.out
 *.raw
+*.lof
+*.toc
+*.lot
 .vscode

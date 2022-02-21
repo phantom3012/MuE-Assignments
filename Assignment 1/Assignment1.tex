@@ -1,10 +1,13 @@
-\documentclass{report}[12pt]
+\documentclass[titlepage]{article}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{siunitx}
 \usepackage{graphicx}
 \usepackage{hyperref}
+\usepackage{fancyref}
+\usepackage{lastpage}
+\usepackage{fancyhdr}
 
 \sisetup{per-mode=symbol}
 \hypersetup{
@@ -18,9 +21,21 @@
 \author{Sai Kartik (2020A3PS0435P)\\ Manpreet Singh (2020A3PS0419P)\\ Rajeev Rajagopal (2020A3PS1237P)}
 \date{February, 2022}
 
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\rfoot{Page \thepage \hspace{1pt} of \pageref{LastPage}} 
+
 \begin{document}
+\pagenumbering{roman}
 \maketitle
-\section*{Question 1}
+\tableofcontents
+\listoffigures
+\listoftables
+\newpage
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\section{Question 1}
 Value of components (resistor/capacitor) present in the circuit:
 \begin{table}[ht]
     \centering
@@ -35,7 +50,7 @@ Value of components (resistor/capacitor) present in the circuit:
     \end{tabular}
     \label{tab:values1}
 \end{table}
-\subsection*{Circuit as on LT SPICE}
+\subsection{Circuit as on LT SPICE}
 %add circuit diagram
 \begin{figure}[ht]
     \centering
@@ -44,7 +59,7 @@ Value of components (resistor/capacitor) present in the circuit:
     \label{fig:circuit1}
 \end{figure}
 \newpage
-\subsection*{Graphs}
+\subsection{Graphs}
 %add graphs: frequency response, input, output and transfer characteristics
 \begin{figure}[ht]
     \centering
@@ -72,12 +87,12 @@ Value of components (resistor/capacitor) present in the circuit:
     \label{fig:i_vs_vgs}
 \end{figure}
 
-In figure \hyperref[fig:fr1]{\ref{fig:fr1}}, for an approximate 3dB change in frequency (as shown by both cursors), we see the phase shift by approximately $45^{\circ}$.
+In \fref{fig:fr1}, for an approximate 3dB change in frequency (as shown by both cursors), we see the phase shift by approximately $45^{\circ}$.
 
 \newpage
-\subsection*{Miscellaneous calculations}
+\subsection{Miscellaneous calculations}
 %find DC operating point, small signal equivalent
-\subsubsection*{DC operating point}
+\subsubsection{DC operating point}
 Given the overdrive voltage of the MOSFET as 0.2V and the threshold voltage as 0.6696061V, to calculate the DC operating point, we must take\\
 $V_{GS}=V_{TH}+V_{OV}=0.8696061$V. With this value of $V_{GS}$, the simulation yields the following values:
 \begin{figure}[ht]
@@ -93,7 +108,7 @@ $V_{GS}=V_{TH}+V_{OV}=0.8696061$V. With this value of $V_{GS}$, the simulation y
     \label{fig:dc_op_freq}
 \end{figure}
 \newpage
-\subsubsection*{Small signal calculations}
+\subsubsection{Small signal calculations}
 Transconductance $g_m$ is given by:
 $$g_m=\frac{2I_D}{V_{OV}}$$
 Using the values found above from the DC operating point calculations, we can calculate the transconductance to be
@@ -116,7 +131,7 @@ Collectively, we get the small signal model as below:
     \label{fig:small_signal}
 \end{figure}
 \newpage
-\section*{Question 2}
+\section{Question 2}
 Value of components (resistors/gain) present in the circuit
 \begin{table}[ht]
     \centering
@@ -134,40 +149,39 @@ Value of components (resistors/gain) present in the circuit
     \end{tabular}
     \label{tab:values2}
 \end{table}
-\subsection*{Circuit as on LT SPICE}
-
+\subsection{Circuit as on LT SPICE}
 \begin{figure}[ht]
     \centering
     \includegraphics[scale=0.25]{resources/orgcircuit.png}
     \caption{Original 2 port network simulated on LT SPICE}
 \end{figure}
 \newpage
-\subsection*{Z, Y and H Parameters}
+\subsection{Z, Y and H Parameters}
 %add Z, Y and h parameters
-\subsubsection*{Z parameters}
+\subsubsection{Z parameters}
 Z parameters as obtained from LT SPICE
 $$ Z = \begin{bmatrix}
         23.492822k\Omega & -4.0669856k\Omega \\
         -47.99043k\Omega & -11.24402k \Omega
     \end{bmatrix}
 $$
-\subsubsection*{Y parameters}
+\subsubsection{Y parameters}
 Y parameters as obtained from LT SPICE
 $$ Y = \begin{bmatrix} %fill matrix with proper values
         24.479166\mu\mho  & -8.8541665\mu\mho \\
         -104.47916\mu\mho & -51.145835\mu\mho
     \end{bmatrix}
 $$
-\subsubsection*{H parameters}
+\subsubsection{H parameters}
 $$ H = \begin{bmatrix} %fill matrix with proper values
         40.851062k\Omega       & 361.70211m \mathrm{V/V} \\
         -4.268085 \mathrm{A/A} & -88.936169\mho
     \end{bmatrix}
 $$
 \newpage
-\subsection*{Calculations}
+\subsection{Calculations}
 %add hand calculations of Z, Y and h parameters
-\subsubsection*{Z parameters}
+\subsubsection{Z parameters}
 \begin{figure}[ht]
     \centering
     \includegraphics[scale=0.20]{resources/zparams1.png}
@@ -216,14 +230,14 @@ Assume the convention in the above circuit for the calculations that follow
     \implies \frac{V_1}{I_2} = \boxed{z_{12} = R_2\left[1-\frac{(1-k)R_2+R_3}{(1-k)R_2+R_3+R_4}\right]}
 \end{gather*}
 \newpage
-Using the corresponding values taken from table \hyperref[tab:values2]{\ref{tab:values2}} into the above equations, we get the matrix for the Z parameters:
+Using the corresponding values taken from \fref{tab:values2} into the above equations, we get the matrix for the Z parameters:
 $$ Z = \begin{bmatrix}
         23.49282297k\Omega  & -4.066985646k\Omega  \\
         -47.99043062k\Omega & -11.244041914k\Omega
     \end{bmatrix}
 $$
 Which is in accordance with the values obtained from the simulation.
-\subsubsection*{Y parameters}
+\subsubsection{Y parameters}
 From the above matrix for Z parameters, we can calculate the Y parameters as follows:
 \begin{gather*}
     \Delta Z = z_{11}z_{22}-z_{12}z_{21}\\
@@ -243,7 +257,7 @@ $$ Y = \begin{bmatrix}
         -1.104480\times 10^{-4}\mu\mho & -5.11\times 10^{-5}\mu\mho  \\[1ex]
     \end{bmatrix}
 $$
-\subsubsection*{H parameters}
+\subsubsection{H parameters}
 
 Similarly, we can calculate the H parameters as follows:
 \begin{gather*}
@@ -259,7 +273,7 @@ $$ H = \begin{bmatrix}
     \end{bmatrix}
 $$
 \newpage
-\subsection*{Load resistance value at port 2}
+\subsection{Load resistance value at port 2}
 %calculate according to question given
 Varying the output resistance at the terminals of port 2 and by calculating the voltage and current across the resistance, we can calculate the maximum power dissipated across the resistance.
 This can be seen in the following figure:
@@ -270,12 +284,12 @@ This can be seen in the following figure:
         \caption{Load resistance value at port 2}
     \end{figure}
 \end{center}
-According to the simulation results shown above, the value for the resistance at which maximum power transfer occurs is $19.551998K\Omega$ and the maximum power transferred is $4.3005441G$W.
+According to the simulation results shown above, the value for the resistance at which maximum power transfer occurs is $19.551998\mathrm{k}\Omega$ and the maximum power transferred is $4.3005441$GW.
 The circuit used to determine the above graph is shown below:
 \begin{figure}[ht]
     \centering
     \makebox[\textwidth]{\includegraphics[width=0.8\columnwidth]{resources/maxpowerresistance.png}}
-    \caption{Load resistance value at port 2}
+    \caption{Circuit used to calculate the maximum power transfer point}
 \end{figure}\\
 The values through which the resistance is varied, is deduced through trial and error to get a clear graph.
 \end{document}
