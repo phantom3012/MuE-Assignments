@@ -37,6 +37,12 @@ Value of components (resistor/capacitor) present in the circuit:
 \end{table}
 \subsection*{Circuit as on LT SPICE}
 %add circuit diagram
+\begin{figure}[ht]
+    \centering
+    \includegraphics[scale=0.50]{resources/q1.png}
+    \caption{Circuit for question 1}
+    \label{fig:circuit1}
+\end{figure}
 \subsection*{Graphs}
 %add graphs: frequency response, input, output and transfer characteristics
 \newpage
@@ -56,6 +62,29 @@ $V_{GS}=V_{TH}+V_{OV}=0.8696061$V. With this value of $V_{GS}$, the simulation y
     \includegraphics[scale=0.70]{resources/opparams.png}
     \caption{DC operating point parameters}
     \label{fig:dc_op_freq}
+\end{figure}
+\newpage
+\subsubsection*{Small signal calculations}
+Transconductance $g_m$ is given by:
+$$g_m=\frac{2I_D}{V_{OV}}$$
+Using the values found above from the DC operating point calculations, we can calculate the transconductance to be
+$$g_m=\frac{2\times4.47302\times10^{-7}}{0.2}=4.47302\times10^{-6}A/V$$
+The value of the output resistance $r_0$ corresponding to the early effect/channel length modulation is given by:
+$$r_0=\left(\left.\frac{\partial i_D}{\partial V_{DS}}\right)^{-1}\right|_{V_{GS}=\mathrm{constant}}$$
+This can be found out from the simulation by setting $V_{GS}=V_{TH}+V_{OV}$ and finding the value of the differential at $V_{DS}=5$V.
+\begin{figure}[ht]
+    \centering
+    \includegraphics[scale=0.35]{resources/r0.png}
+    \caption{Output resistance for small signal calculations}
+    \label{fig:r0}
+\end{figure}\\
+The value of $r_0$ we get from this graph is $r_0=59.272865\mathrm{M}\Omega$.
+Collectively, we get the small signal model as:
+\begin{figure}[ht]
+    \centering
+    \includegraphics[scale=0.35]{resources/ssmodel.png}
+    \caption{Small signal model}
+    \label{fig:small_signal}
 \end{figure}
 \newpage
 \section*{Question 2}
