@@ -1,4 +1,4 @@
-\documentclass{article}[12pt]
+\documentclass{report}[12pt]
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage{amsfonts}
@@ -43,8 +43,37 @@ Value of components (resistor/capacitor) present in the circuit:
     \caption{Circuit for question 1}
     \label{fig:circuit1}
 \end{figure}
+\newpage
 \subsection*{Graphs}
 %add graphs: frequency response, input, output and transfer characteristics
+\begin{figure}[ht]
+    \centering
+    \makebox[\textwidth]{\includegraphics[width=\columnwidth]{resources/freqresponse.png}}
+    \caption{Frequency Response}
+    \label{fig:fr1}
+\end{figure}
+\begin{figure}[ht]
+    \centering
+    \makebox[\textwidth]{\includegraphics[width=\columnwidth]{resources/vtc.png}}
+    \caption{Voltage transfer characteristics}
+    \label{fig:vtc}
+\end{figure}
+\newpage
+\begin{figure}[ht]
+    \centering
+    \makebox[\textwidth]{\includegraphics[width=\columnwidth]{resources/idvsvdspng.png}}
+    \caption{Graph of $i_{DS}$ vs $V_{DS}$}
+    \label{fig:i_vs_vds}
+\end{figure}
+\begin{figure}[ht]
+    \centering
+    \makebox[\textwidth]{\includegraphics[width=\columnwidth]{resources/idsvsvgs.png}}
+    \caption{Graph of $i_{DS}$ vs $V_{GS}$}
+    \label{fig:i_vs_vgs}
+\end{figure}
+
+In Figure \hyperref[fig:fr1]{\ref{fig:fr1}}, for an approximate 3dB change in frequency (as shown by both cursors), we see the phase shift by approximately $45^{\circ}$.
+
 \newpage
 \subsection*{Miscellaneous calculations}
 %find DC operating point, small signal equivalent
@@ -74,7 +103,7 @@ $$r_0=\left(\left.\frac{\partial i_D}{\partial V_{DS}}\right)^{-1}\right|_{V_{GS
 This can be found out from the simulation by setting $V_{GS}=V_{TH}+V_{OV}$ and finding the value of the differential at $V_{DS}=5$V.
 \begin{figure}[ht]
     \centering
-    \includegraphics[scale=0.35]{resources/r0.png}
+    \makebox[\textwidth]{\includegraphics[width=\columnwidth]{resources/r0.png}}
     \caption{Output resistance for small signal calculations}
     \label{fig:r0}
 \end{figure}\\
@@ -198,7 +227,10 @@ Which is in accordance with the values obtained from the simulation.
 From the above matrix for Z parameters, we can calculate the Y parameters as follows:
 \begin{gather*}
     \Delta Z = z_{11}z_{22}-z_{12}z_{21}\\
-    \implies \Delta Z = [(23.49282297\times-11.244041914)-(-47.99043062\times-4.066985646)]\times 10^3\\
+    \begin{split}
+        \implies \Delta Z = [(23.49282297\times-11.244041914)-\\
+        (-47.99043062\times-4.066985646)]\times 10^3\\
+    \end{split}\\
     \Delta Z =-459.326\times 10^6\\
     Y = \begin{bmatrix}
         \dfrac{z_{22}}{\Delta Z}  & -\dfrac{z_{12}}{\Delta Z} \\[2ex]
@@ -234,10 +266,16 @@ This can be seen in the following figure:
 \begin{center}
     \begin{figure}[ht]
         \centering
-        \includegraphics[scale=0.50]{resources/loadresistance.png}
+        \makebox[\textwidth]{\includegraphics[width=\columnwidth]{resources/loadresistance.png}}
         \caption{Load resistance value at port 2}
     \end{figure}
 \end{center}
 According to the simulation results shown above, the value for the resistance at which maximum power transfer occurs is $19.551998K\Omega$ and the maximum power transferred is $4.3005441G$W.
-
+The circuit used to determine the above graph is shown below:
+\begin{figure}[ht]
+    \centering
+    \makebox[\textwidth]{\includegraphics[width=\columnwidth]{resources/maxpowerresistance.png}}
+    \caption{Load resistance value at port 2}
+\end{figure}\\
+The values to vary the resistance was deduced through trial and error to get a clear graph.
 \end{document}
